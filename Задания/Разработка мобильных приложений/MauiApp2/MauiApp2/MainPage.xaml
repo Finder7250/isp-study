@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.MainPage"
+             BackgroundColor="#F5F1E6">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Шапка -->
+            <Grid ColumnDefinitions="50, *, 50">
+                <Frame Grid.Column="0" CornerRadius="25" HeightRequest="50" WidthRequest="50" BackgroundColor="#DDDDDD" HasShadow="False">
+                    <Label Text="M" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </Frame>
+
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="10,0">
+                    <Label Text="ВАШ РЕСТОРАН" FontSize="10" TextColor="Gray"/>
+                    <Label Text="Maritozzo" FontSize="16" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+
+                <Label Grid.Column="2" Text="🛒" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Grid>
+
+            <!-- Поиск -->
+            <Frame CornerRadius="10" BackgroundColor="#EEEEEE" HasShadow="False" Padding="10">
+                <Label Text="🔍 Найти блюдо" TextColor="Gray"/>
+            </Frame>
+
+            <!-- Баннер -->
+            <Frame CornerRadius="15" BackgroundColor="#2E3A2F" HasShadow="False" Padding="20" HeightRequest="150">
+                <VerticalStackLayout VerticalOptions="Center" Spacing="5">
+                    <Label Text="СЕГОДНЯ" TextColor="#AAAAAA" FontSize="10"/>
+                    <Label Text="Вкус Италии&#10;рядом" TextColor="White" FontSize="24" FontAttributes="Bold"/>
+                    <Label Text="Скидка 15%" TextColor="#CCCCCC" FontSize="12"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Категории -->
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout Spacing="10">
+                    <Button Text="Популярное" BackgroundColor="#2E3A2F" TextColor="White" CornerRadius="20"/>
+                    <Button Text="Пицца" BackgroundColor="Transparent" BorderColor="Gray" BorderWidth="1" TextColor="Black" CornerRadius="20"/>
+                    <Button Text="Паста" BackgroundColor="Transparent" BorderColor="Gray" BorderWidth="1" TextColor="Black" CornerRadius="20"/>
+                </HorizontalStackLayout>
+            </ScrollView>
+
+            <!-- Заголовок -->
+            <Label Text="Стоит попробовать" FontSize="22" FontAttributes="Bold" Margin="0,10,0,0"/>
+
+            <!-- Карточка 1 -->
+            <Frame CornerRadius="15" BackgroundColor="White" HasShadow="False" Padding="10">
+                <Grid ColumnDefinitions="80, *">
+                    <!-- Вместо картинки пока просто цветной квадрат, чтобы не искать файлы -->
+                    <BoxView Grid.Column="0" Color="#FFCCCC" HeightRequest="80" WidthRequest="80" CornerRadius="10"/>
+
+                    <VerticalStackLayout Grid.Column="1" Margin="10,0,0,0">
+                        <Label Text="Буррата с томатами" FontAttributes="Bold" FontSize="16"/>
+                        <Label Text="Очень вкусно, итальянская классика" FontSize="12" TextColor="Gray" LineBreakMode="TailTruncation"/>
+                        <Label Text="790 ₽" FontAttributes="Bold" FontSize="16" Margin="0,5,0,0"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Карточка 2 -->
+            <Frame CornerRadius="15" BackgroundColor="White" HasShadow="False" Padding="10">
+                <Grid ColumnDefinitions="80, *">
+                    <BoxView Grid.Column="0" Color="#CCFFCC" HeightRequest="80" WidthRequest="80" CornerRadius="10"/>
+                    <VerticalStackLayout Grid.Column="1" Margin="10,0,0,0">
+                        <Label Text="Пицца с овощами" FontAttributes="Bold" FontSize="16"/>
+                        <Label Text="Моцарелла, томаты, зелень" FontSize="12" TextColor="Gray"/>
+                        <Label Text="850 ₽" FontAttributes="Bold" FontSize="16" Margin="0,5,0,0"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Кнопка -->
+            <Button Text="Оформить заказ • 850 ₽" 
+                    BackgroundColor="#C85A48" 
+                    TextColor="White" 
+                    CornerRadius="25" 
+                    HeightRequest="50" 
+                    Margin="0,10,0,20"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

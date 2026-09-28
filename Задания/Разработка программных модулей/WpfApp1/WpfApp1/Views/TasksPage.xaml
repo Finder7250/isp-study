@@ -1,0 +1,69 @@
+<UserControl x:Class="TaskManagerApp.Views.TasksPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Задачи" FontSize="26" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0"
+                     materialDesign:HintAssist.Hint="Поиск по названию или исполнителю"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,0,10,0"/>
+
+            <ComboBox Grid.Column="1"
+                      ItemsSource="{Binding Statuses}"
+                      SelectedItem="{Binding StatusFilter}"
+                      materialDesign:HintAssist.Hint="Статус"
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      Margin="0,0,10,0"/>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button Style="{StaticResource PrimaryButtonStyle}" Click="Add_Click" Content="Добавить"/>
+                <Button Style="{StaticResource PrimaryButtonStyle}" Click="Edit_Click" Content="Редактировать"/>
+                <Button Style="{StaticResource PrimaryButtonStyle}" Click="Delete_Click" Content="Удалить"/>
+            </StackPanel>
+        </Grid>
+
+        <DataGrid x:Name="TasksGrid" Grid.Row="2"
+                  ItemsSource="{Binding TasksView}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  materialDesign:DataGridAssist.CellPadding="13,8"
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="13,8">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="Исполнитель" Binding="{Binding Assignee}" Width="150"/>
+                <DataGridTextColumn Header="Приоритет" Binding="{Binding Priority}" Width="120"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="130"/>
+                <DataGridTextColumn Header="Срок" Binding="{Binding DueDate, StringFormat=dd.MM.yyyy}" Width="120"/>
+            </DataGrid.Columns>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Status}" Value="Просрочено">
+                            <Setter Property="Background" Value="#22E53935"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+    </Grid>
+</UserControl>
